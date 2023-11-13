@@ -1,13 +1,15 @@
 import express from "express";
-import bodyParser from "body-parser";
+import bodyParser from "body-parser"; // used to process the data sent to the request body
 import mongoose from "mongoose";
-import cors from "cors";
-import dotenv from "dotenv";
-import multer from "multer";
-import helmet from "helmet";
-import morgan from "morgan";
+import cors from "cors"; // cross origin resource sharing used to communicate between fe to be
+import dotenv from "dotenv"; // used for environment variables
+import multer from "multer"; // middleware for handling file uploads
+import helmet from "helmet"; // helps with request safety (helps secure node app)
+import morgan from "morgan"; // simplifies the process of logging requests
 import path from "path";
 import { fileURLToPath } from "url";
+import authRoutes from "./routes/auth.js";
+import { register } from "./controllers/auth.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -24,7 +26,6 @@ app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* FILE STORAGE */
-
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/assets");
@@ -35,8 +36,13 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-/* MONGOOSE SETUP */
+/* ROUTES WITH FILES */
+app.post("/auth/register", upload.single("picture"), register);
 
+/* ROUTES */
+app.use("/auth", authRoutes);
+
+/* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
 mongoose
   .connect(process.env.MONGO_URL)
