@@ -1,3 +1,5 @@
+//this file allows me to customize the material ui theme to my liking and makes it easier to change the theme later on if I want to
+
 // color design tokens export
 export const colorTokens = {
   grey: {
