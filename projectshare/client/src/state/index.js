@@ -31,9 +31,9 @@ export const authSlice = createSlice({
     // Action creator to set friends for the user (if user exists)
     setFriends: (state, action) => {
       if (state.user) {
-        state.user.friends = action.payload.friends;
+        state.user.friends = action.payload.friends; // Here if the user exists, we set the friends array in the user object
       } else {
-        console.error("user friends non-existent");
+        console.error("user friends non-existent"); // If the user does not exist, we log an error
       }
     },
     // Action creator to set the posts array in the state
