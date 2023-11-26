@@ -76,6 +76,7 @@ export const themeSettings = (mode) => {
             },
           }),
     },
+    // typography settings such as font family and font size for each variant of headings
     typography: {
       fontFamily: ["Rubik", "sans-serif"].join(","),
       fontSize: 12,

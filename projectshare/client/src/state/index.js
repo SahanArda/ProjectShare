@@ -13,13 +13,13 @@ const initialState = {
 export const authSlice = createSlice({
   name: "auth", // Name of the slice
   initialState, // Initial state is defined above
-  reducers: {
+  reducers: { // Reducers are actions that change the initial state
     // Action creator to toggle between "light" and "dark" modes
     setMode: (state) => {
       state.mode = state.mode === "light" ? "dark" : "light";
     },
     // Action creator to set user and authentication token on login
-    setLogin: (state, action) => {
+    setLogin: (state, action) => { // Action contains all the arguments / parameters
       state.user = action.payload.user;
       state.token = action.payload.token;
     },
@@ -42,9 +42,9 @@ export const authSlice = createSlice({
     },
     // Action creator to update a specific post in the posts array
     setPost: (state, action) => {
-      const updatedPosts = state.posts.map((post) => {
-        if (post._id === action.payload.post._id) return action.payload.post;
-        return post;
+      const updatedPosts = state.posts.map((post) => { // We map through each post in the posts array 
+        if (post._id === action.payload.post._id) return action.payload.post; // If the post id matches the id of the post we want to update, we return the updated post
+        return post; 
       });
       state.posts = updatedPosts;
     },
@@ -52,6 +52,7 @@ export const authSlice = createSlice({
 });
 
 // Exporting individual action creators
+// These are the action creators we defined above
 export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } =
   authSlice.actions;
 
