@@ -19,12 +19,12 @@ export const authSlice = createSlice({
       state.mode = state.mode === "light" ? "dark" : "light";
     },
     // Action creator to set user and authentication token on login
-    setLogin: (state, action) => { // Action contains all the arguments / parameters
+    setLogIn: (state, action) => { // Action contains all the arguments / parameters
       state.user = action.payload.user;
       state.token = action.payload.token;
     },
     // Action creator to reset user and token to null on logout
-    setLogout: (state) => {
+    setLogOut: (state) => {
       state.user = null;
       state.token = null;
     },
@@ -53,7 +53,7 @@ export const authSlice = createSlice({
 
 // Exporting individual action creators
 // These are the action creators we defined above
-export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } =
+export const { setMode, setLogIn, setLogOut, setFriends, setPosts, setPost } =
   authSlice.actions;
 
 // Exporting the reducer function
