@@ -75,7 +75,7 @@ const Form = () => {
         body: formData,
       }
     );
-    const savedUser = await savedUserResponse.json(); 
+    const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm(); // This comes from formik and allows us to reset the form
 
     if (savedUser) {
@@ -88,7 +88,7 @@ const Form = () => {
     // This function is responsible for logging the user in by sending the form info to the backend and checking if the user exists
     const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" }, 
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
     const loggedIn = await loggedInResponse.json();

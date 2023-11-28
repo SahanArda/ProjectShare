@@ -9,7 +9,7 @@ import UserImage from "../../components/UserImage";
 import FlexBetween from "../../components/FlexBetween";
 import WidgetWrapper from "../../components/WidgetWrapper";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserWidget = ({ userId, picturePath }) => {
@@ -18,7 +18,7 @@ const UserWidget = ({ userId, picturePath }) => {
   const navigate = useNavigate();
   const token = useSelector((state) => state.token);
   const dark = palette.neutral.dark;
-  const medium = palette.neutral.medium;
+  const medium = palette.neutral.main;
   const main = palette.neutral.main;
 
   const getUser = async () => {
@@ -75,7 +75,7 @@ const UserWidget = ({ userId, picturePath }) => {
             <Typography color={medium}>{friends.length} friends</Typography>
           </Box>
         </FlexBetween>
-        <ManageAccountsOutlined />
+        <ManageAccountsOutlined cursor="pointer" />
       </FlexBetween>
 
       <Divider />
@@ -97,13 +97,13 @@ const UserWidget = ({ userId, picturePath }) => {
       {/* THIRD ROW */}
       <Box p="1rem 0">
         <FlexBetween mb="0.5rem">
-          <Typography color={medium}>Who's viewed your profile</Typography>
+          <Typography color={medium}>Profile Views</Typography>
           <Typography color={main} fontWeight="500">
             {viewedProfile}
           </Typography>
         </FlexBetween>
         <FlexBetween>
-          <Typography color={medium}>Impressions of your post</Typography>
+          <Typography color={medium}>Impressions</Typography>
           <Typography color={main} fontWeight="500">
             {impressions}
           </Typography>
@@ -120,10 +120,10 @@ const UserWidget = ({ userId, picturePath }) => {
 
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/twitter.png" alt="twitter" />
+            <img src="/assets/github.svg" alt="github" width="30px" />
             <Box>
               <Typography color={main} fontWeight="500">
-                Twitter
+                Github
               </Typography>
               <Typography color={medium}>Social Network</Typography>
             </Box>
@@ -131,12 +131,25 @@ const UserWidget = ({ userId, picturePath }) => {
           <EditOutlined sx={{ color: main }} />
         </FlexBetween>
 
-        <FlexBetween gap="1rem">
+        <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/linkedin.png" alt="linkedin" />
+            <img src="/assets/linkedin.png" alt="linkedin" width="30px" />
             <Box>
               <Typography color={main} fontWeight="500">
                 Linkedin
+              </Typography>
+              <Typography color={medium}>Network Platform</Typography>
+            </Box>
+          </FlexBetween>
+          <EditOutlined sx={{ color: main }} />
+        </FlexBetween>
+
+        <FlexBetween gap="1rem">
+          <FlexBetween gap="1rem">
+            <img src="/assets/instagram.svg" alt="instagram" width="30px" />
+            <Box>
+              <Typography color={main} fontWeight="500">
+                Instagram
               </Typography>
               <Typography color={medium}>Network Platform</Typography>
             </Box>
@@ -147,5 +160,4 @@ const UserWidget = ({ userId, picturePath }) => {
     </WidgetWrapper>
   );
 };
-
 export default UserWidget;
