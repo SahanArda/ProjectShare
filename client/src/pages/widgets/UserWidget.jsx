@@ -14,12 +14,13 @@ import { useNavigate } from "react-router-dom";
 
 const UserWidget = ({ userId, picturePath }) => {
   const [user, setUser] = useState(null);
-  const { palette } = useTheme();
+  const theme = useTheme();
   const navigate = useNavigate();
   const token = useSelector((state) => state.token);
-  const dark = palette.neutral.dark;
-  const medium = palette.neutral.main;
-  const main = palette.neutral.main;
+  const dark = theme.palette.neutral.dark;
+  const medium = theme.palette.neutral.main;
+  const main = theme.palette.neutral.main;
+  const hover = theme.palette.primary.main;
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
@@ -64,8 +65,10 @@ const UserWidget = ({ userId, picturePath }) => {
               color={dark}
               fontWeight="500"
               sx={{
+                transition: "0.3s",
                 "&:hover": {
-                  color: palette.primary.light,
+                  transition: "0.3s",
+                  color: hover,
                   cursor: "pointer",
                 },
               }}
@@ -120,7 +123,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-            <img src="/assets/github.svg" alt="github" width="30px" />
+            <img src="/assets/github.png" alt="github" width="35px" />
             <Box>
               <Typography color={main} fontWeight="500">
                 Github
@@ -128,12 +131,14 @@ const UserWidget = ({ userId, picturePath }) => {
               <Typography color={medium}>Social Network</Typography>
             </Box>
           </FlexBetween>
-          <EditOutlined sx={{ color: main }} />
+          <EditOutlined
+            sx={{ color: main, "&:hover": { cursor: "pointer" } }}
+          />
         </FlexBetween>
 
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-            <img src="/assets/linkedin.png" alt="linkedin" width="30px" />
+            <img src="/assets/linkedin.png" alt="linkedin" width="35px" />
             <Box>
               <Typography color={main} fontWeight="500">
                 Linkedin
@@ -141,12 +146,14 @@ const UserWidget = ({ userId, picturePath }) => {
               <Typography color={medium}>Network Platform</Typography>
             </Box>
           </FlexBetween>
-          <EditOutlined sx={{ color: main }} />
+          <EditOutlined
+            sx={{ color: main, "&:hover": { cursor: "pointer" } }}
+          />
         </FlexBetween>
 
         <FlexBetween gap="1rem">
           <FlexBetween gap="1rem">
-            <img src="/assets/instagram.svg" alt="instagram" width="30px" />
+            <img src="/assets/instagram.svg" alt="instagram" width="35px" />
             <Box>
               <Typography color={main} fontWeight="500">
                 Instagram
@@ -154,7 +161,9 @@ const UserWidget = ({ userId, picturePath }) => {
               <Typography color={medium}>Network Platform</Typography>
             </Box>
           </FlexBetween>
-          <EditOutlined sx={{ color: main }} />
+          <EditOutlined
+            sx={{ color: main, "&:hover": { cursor: "pointer" } }}
+          />
         </FlexBetween>
       </Box>
     </WidgetWrapper>

@@ -37,7 +37,7 @@ const Navbar = () => {
   const neutralLight = theme.palette.neutral.light; // This is an example of how we access the neutral light colour from the theme
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;
-  const primaryLight = theme.palette.primary.light;
+  const hover = theme.palette.primary.mediumMain
   const alt = theme.palette.background.alt;
 
   const userFullName = `${user.firstName} ${user.lastName}`;
@@ -51,9 +51,11 @@ const Navbar = () => {
           color="primary"
           onClick={() => navigate("/Home")} // Takes user to home page when title/logo is clicked
           sx={{
+            transition: "0.3s",
             // Sx allows us to write css to style the element such as colour and hover affects
             "&:hover": {
-              color: primaryLight,
+              color: hover,
+              transition: "0.3s",
               cursor: "pointer",
             },
           }}
