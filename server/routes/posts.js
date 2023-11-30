@@ -6,7 +6,7 @@ const router = express.Router();
 
 /* READ */
 router.get("/", verifyToken, getFeedPosts); // shows all the posts to every user
-router.get("/:userId/posts", verifyToken, getUserPosts); // shows posts of a specific user
+router.get("/:userId", verifyToken, getUserPosts); // shows posts of a specific user
 
 /* UPDATE */
 router.patch("/:id/like", verifyToken, likePosts); // liking the post
