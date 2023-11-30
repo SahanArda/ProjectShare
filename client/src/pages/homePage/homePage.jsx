@@ -2,6 +2,10 @@ import { Box, useMediaQuery } from "@mui/material";
 import Navbar from "../navbar/navbar";
 import { useSelector } from "react-redux";
 import UserWidget from "../widgets/UserWidget";
+import MyPostWidget from "../widgets/MyPostWidget";
+import PostsWidget from "../widgets/PostsWidget";
+import FriendListWidget from "../widgets/FriendListWidget";
+import AdvertWidget from "../widgets/AdvertWidget";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -13,17 +17,25 @@ const HomePage = () => {
         width="100%"
         p="2rem 6%"
         display={isNonMobileScreens ? "flex" : "block"}
-        gap="0.5rem"
-        justifyContent="space-between"
+        gap="5.5rem"
+        // justifyContent="space-between"
       >
         <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
           <UserWidget userId={_id} picturePath={picturePath} />
+          <FriendListWidget userId={_id} />
         </Box>
         <Box
-          flexBasis={isNonMobileScreens ? "26%" : undefined}
+          flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
-        ></Box>
-        {isNonMobileScreens && <Box flexBasis="26%"></Box>}
+        >
+          <MyPostWidget picturePath={picturePath} />
+          <PostsWidget userId={_id} />
+        </Box>
+        {isNonMobileScreens && (
+          <Box flexBasis="26%">
+            <AdvertWidget />
+          </Box>
+        )}
       </Box>
     </Box>
   );
