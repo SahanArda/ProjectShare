@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import LandingPage from "./pages/landingPage/landingPage.jsx";
 import HomePage from "./pages/homePage/homePage.jsx";
 import LoginPage from "./pages/loginPage/loginPage.jsx";
 import ProfilePage from "./pages/profilePage/profilePage.jsx";
@@ -24,15 +25,15 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/home"
-              element={isAuth ? <HomePage /> : <Navigate to="/" />} 
+              element={isAuth ? <HomePage /> : <Navigate to="/login" />} 
             />
             <Route
               path="/profile/:userId"
-              element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
+              element={isAuth ? <ProfilePage /> : <Navigate to="/login" />}
             />
             <Route path="*" element={<Error404 />} />
           </Routes>
