@@ -29,11 +29,11 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/home"
-              element={isAuth ? <HomePage /> : <Navigate to="/" />} 
+              element={isAuth ? <HomePage /> : <Navigate to="/login" />} 
             />
             <Route
               path="/profile/:userId"
-              element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
+              element={isAuth ? <ProfilePage /> : <Navigate to="/login" />}
             />
             <Route path="*" element={<Error404 />} />
           </Routes>
