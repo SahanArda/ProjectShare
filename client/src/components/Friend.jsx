@@ -18,6 +18,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const primaryDark = theme.palette.primary.dark;
   const main = theme.palette.neutral.main;
   const medium = theme.palette.neutral.medium;
+  const hover = theme.palette.primary.main;
 
   const isFriend = friends.find((friend) => friend._id === friendId);
 
@@ -51,8 +52,10 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
             variant="h5"
             fontWeight="500"
             sx={{
+              transition: "0.3s",
               "&:hover": {
-                color: theme.palette.primary.light,
+                transition: "0.3s",
+                color: hover,
                 cursor: "pointer",
               },
             }}
