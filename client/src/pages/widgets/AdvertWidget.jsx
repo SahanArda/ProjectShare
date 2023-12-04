@@ -28,8 +28,10 @@ const AdvertWidget = () => {
         <Typography color={medium}>apple.com</Typography>
       </FlexBetween>
       <Typography color={medium} m="0.5rem 0">
-        Your pathway to stunning and immaculate beauty and made sure your skin
-        is exfoliating skin and shining like light.
+        MacBook Pro blasts forward with the M3, M3 Pro, and M3 Max chips. Built
+        on 3-nanometer technology and featuring an all-new GPU architecture,
+        they&apos;re the most advanced chips ever built for a personal computer. And
+        each one brings more pro performance and capability.
       </Typography>
     </WidgetWrapper>
   );

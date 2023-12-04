@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./pages/homePage/homePage.jsx";
 import LoginPage from "./pages/loginPage/loginPage.jsx";
 import ProfilePage from "./pages/profilePage/profilePage.jsx";
+import Error404 from "./pages/error404/error404.jsx";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -33,7 +34,7 @@ function App() {
               path="/profile/:userId"
               element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
             />
-            {/* <Route path="*" element={<Error404 />} /> */}
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
